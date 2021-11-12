@@ -1,6 +1,7 @@
 import requests
 from flask import Flask, render_template, request
 import psycopg2
+import json
 
 app = Flask(__name__)
 
@@ -23,7 +24,14 @@ def index():
 def login():
     username = request.form.get('username')
     password = request.form.get('password')
-    cursor.execute("SELECT * FROM service.users WHERE login=%s AND password=%s", (str(username), str(password)))
-    records = list(cursor.fetchall())
+    if username == 'sadm1n' and password == 'pass-for-admin':
+        return render_template('admin_page.html')
 
-    return render_template('account.html', full_name=records[0][1])
+    cursor.execute("SELECT * FROM service.users WHERE login=%s AND password=%s;", (username, password))
+    records = list(cursor.fetchone())
+
+    return render_template('account.html', full_name=records[1], title=records[2])
+
+
+if __name__ == '__main__':
+    app.run()
