@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-</head>
-<body>
-    <form action="" method="post">
-        <p>
-	    <label for="username">Username</label>
-	    <input type="text" name="username">
-	</p>
-	<p>
-	    <label for="password">Password</label>
-	    <input type="password" name="password">
-	</p>
-	<p>
-	    <input type="submit">
-	</p>
-    </form>
+	<head>
+		<meta charset="UTF-8">
+		<title>Login</title>
+		<link rel="stylesheet" type="text/css" href="/static/form-style.css">
+	</head>
+	<body>
+		<form action="" method="post">
+			<input type="text" name="username" id="log_input" placeholder="login" class="input-value">
+			<input type="password" name="password" id="pass_input" placeholder="password" class="input-value">
+			<input type="submit" name="login" value="Sign Up" id="button">
+			<input type="submit" name="registration" value="Sign In">
+		</form>
+		<div class="hidden" id="fill">fill in the gaps</div>
+		<div>{{wrong}}</div>
 
-</body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	<script src="/static/app.js"></script>
+	</body>
 </html>

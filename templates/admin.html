@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <title>Title</title>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <td>ID</td>
+                <td>full name</td>
+                <td>nickname</td>
+                <td>password</td>
+            </tr>
+        {% for user in db %}
+            <tr>
+            {% for i in range(user|length) %}
+                <td>{{user[i]}}</td>
+            {% endfor %}
+                <td><input type="submit" value="Delete"></td>
+            </tr>
+        {% endfor %}
+        </table>
+    </body>
+</html>

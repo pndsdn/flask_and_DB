@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Home {{title}}</title>
-    <form action="" method="post">
-        {% if full_name %}
-        <p>Hello, {{full_name}}! </p>
-        {% endif %}
+    <head>
+        <meta charset="UTF-8">
+        <title>Home {{user[2]}}</title>
+    </head>
+    <body>
+        <p>Hello, {{user[1]}}!</p>
+        <p>Your login: <input value="{{user[2]}}" disabled></p>
+        <p>Your password: <input value="{{user[3]}}" disabled></p>
+        <form action="" method="post">
+            <input name="delete" type="submit" value="Delete account">
+            <input name="log-for-del" value="{{user[2]}}" style="display: none">
+        </form>
 
-	</p>
-
-    </form>
-</head>
-<body>
-
-</body>
+    </body>
 </html>
