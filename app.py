@@ -62,6 +62,13 @@ def registration():
 
 @app.route('/admin/', methods=['GET', 'POST'])
 def admin():
+    cursor.execute("SELECT * FROM service.users")
+    data_users = cursor.fetchall()
+    return render_template("admin.html", db=data_users)
+
+
+@app.route('/delete', methods=['GET', 'POST'])
+def user_del():
     if request.method == 'POST':
         data = request.get_json()
         log_del = data['log-for-del']
@@ -70,7 +77,7 @@ def admin():
 
     cursor.execute("SELECT * FROM service.users")
     data_users = cursor.fetchall()
-    return render_template('admin.html', db=data_users)
+    return jsonify(data_users)
 
 
 if __name__ == '__main__':
