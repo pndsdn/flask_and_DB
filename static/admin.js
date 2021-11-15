@@ -1,9 +1,11 @@
 $(function () {
     var buttons = document.getElementsByClassName('buttons');
+    console.log(buttons);
     var arr_but = [];
     for (i = 0; i < buttons.length; ++i) {
         arr_but[i] = buttons[i];
     }
+    console.log(arr_but);
     arr_but.forEach(function (e) {
         e.onclick = function(element) {
             element.preventDefault();

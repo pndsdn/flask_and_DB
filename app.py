@@ -46,6 +46,7 @@ def login():
 
 @app.route('/registration/', methods=['GET', 'POST'])
 def registration():
+    ret = ''
     if request.method == 'POST':
         new_name = request.form.get('name')
         new_login = request.form.get('login')
@@ -57,7 +58,9 @@ def registration():
             conn.commit()
             return redirect('/login/')
 
-    return render_template('registration.html')
+        ret = 'имя пользователя с таким логином уже существует'
+
+    return render_template('registration.html', wrong=ret)
 
 
 @app.route('/admin/', methods=['GET', 'POST'])
@@ -76,8 +79,7 @@ def user_del():
         conn.commit()
 
     cursor.execute("SELECT * FROM service.users")
-    data_users = cursor.fetchall()
-    return jsonify(data_users)
+    return jsonify()
 
 
 if __name__ == '__main__':
