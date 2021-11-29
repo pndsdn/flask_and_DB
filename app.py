@@ -1,7 +1,5 @@
-import requests
 from flask import Flask, render_template, request, jsonify, redirect
 import psycopg2
-import json
 
 app = Flask(__name__)
 
@@ -54,7 +52,8 @@ def registration():
 
         cursor.execute("SELECT login FROM service.users WHERE login=%s;", (new_login,))
         if cursor.fetchone() is None:
-            cursor.execute("INSERT INTO service.users (full_name, login, password) VALUES (%s, %s, %s);", (str(new_name), str(new_login), str(password)))
+            cursor.execute("INSERT INTO service.users (full_name, login, password) VALUES (%s, %s, %s);",
+                           (str(new_name), str(new_login), str(password)))
             conn.commit()
             return redirect('/login/')
 
